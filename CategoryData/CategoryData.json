@@ -1,0 +1,90 @@
+[
+    {
+      "_id": 1,
+      "brand": "Apple",
+      "img":"https://i.ibb.co/y80hdvk/Apple-Mac-Book-Air-core-i5-2014-4-256-GB.jpg",
+      "products": [
+        {
+          "id": 1,
+          "product_name": "Mac-Book-Pro",
+          "picture": "https://i.ibb.co/mCy9kL2/Mac-Book-Pro.jpg",
+          "location": "potenga, chottogram",
+          "resale_Price": "150",
+          "orginal_price": "200",
+          "years_of_use": "6 months",
+          "sellers_name": "jahangir",
+          "post_time": "24 november, 2022"
+        },
+        {
+          "id": 2,
+          "product_name": "Apple-Mac-Book-Air-Intel-Core-i7-2017",
+          "picture": "https://i.ibb.co/qkR66BW/Apple-Mac-Book-Air-Intel-Core-i7-2017.webp",
+          "location": "jinjira, dhaka",
+          "resale_Price": "450",
+          "orginal_price": "500",
+          "years_of_use": "6 months",
+          "sellers_name": "jahangir",
+          "post_time": "24 november, 2022"
+        }
+      ]
+    },
+    {
+      "_id": 2,
+      "brand": "Dell",
+      "img":"https://i.ibb.co/wCMZCn5/Dell-Inspiron-3501-i5-11th-Gen-MX330-Black-Laptop.jpg",
+      "products": [
+        {
+          "id": 1,
+          "product_name": "Dell Latitude 5420",
+          "picture": "https://i.ibb.co/tPbfDCk/Dell-Latitude-5420.jpg",
+          "location": "gulshan,dhaka",
+          "resale_Price": "130",
+          "orginal_price": "200",
+          "years_of_use": "24 months",
+          "sellers_name": "polash",
+          "post_time": "24 november, 2022"
+        },
+        {
+          "id": 2,
+          "product_name": "Dell-Inspiron-3501",
+          "picture": "https://i.ibb.co/wCMZCn5/Dell-Inspiron-3501-i5-11th-Gen-MX330-Black-Laptop.jpg",
+          "location": "mirpur,dhaka",
+          "resale_Price": "300",
+          "orginal_price": "400",
+          "years_of_use": " 15 months",
+          "sellers_name": "kabila",
+          "post_time": "24 november, 2022"
+        }
+      ]
+    },
+    {
+      "_id": 3,
+      "brand": "Hp",
+      "img":"https://i.ibb.co/pzckm2z/HP-Envy-13-M-BD1033-DX-i7-2.jpg",
+      "products": [
+        {
+          "id": 1,
+          "product_name": "HP-All-in-One-24",
+          "picture": "https://i.ibb.co/SKq5V4T/HP-All-in-One-24-df1224-PC.jpg",
+          "location": "Gazipur, kaliyakoir",
+          "resale_Price": "280",
+          "orginal_price": "320",
+          "years_of_use": "7 months",
+          "sellers_name": "sajahan",
+          "post_time": "24 november, 2022"
+        },
+        {
+          "id": 2,
+          "product_name": "Hp-Laptop-14",
+          "picture": "https://i.ibb.co/55RC4Hr/Hp-Laptop-14-dq0003dx.jpg",
+          "location": "Gazipur, joydevpur",
+          "resale_Price": "220",
+          "orginal_price": "280",
+          "years_of_use": "12 months",
+          "sellers_name": "alamgir",
+          "post_time": "24 november, 2022"
+        }
+      ]
+    }
+  ]
+  
