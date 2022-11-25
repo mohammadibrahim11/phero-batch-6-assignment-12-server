@@ -24,6 +24,7 @@ async function run() {
     const categoryCollection = client
       .db("reCommerce")
       .collection("productsCategory");
+      const bookedProductCollection=client.db('reCommerce').collection('bookedProduct')
 
     app.get("/categories", async (req, res) => {
       const query = {};
@@ -38,6 +39,19 @@ async function run() {
         const categoriesDetails = await categoryCollection.findOne(query);
         res.send(categoriesDetails);
       });
+      app.post('/bookings', async (req,res)=> {
+        const booking = req.body;
+        console.log(booking);
+        const bookedProduct = await bookedProductCollection.insertOne(booking);
+        res.send(bookedProduct);
+      });
+
+      app.get('/bookings',  async ( req, res)=>{
+        const query = {};
+        const cursor = bookedProductCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result);
+      })
   } finally {
   }
 }
