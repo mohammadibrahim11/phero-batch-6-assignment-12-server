@@ -140,7 +140,7 @@ async function run() {
       res.send(result);
     });
 
-    app.get("/users", async (req, res) => {
+    app.get("/allusers", async (req, res) => {
       const role = req.query.role;
       const query = { role: role };
       const users = await usersCollection.find(query).toArray();
