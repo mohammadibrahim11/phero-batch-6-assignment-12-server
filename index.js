@@ -48,7 +48,9 @@ async function run() {
       .db("reCommerce")
       .collection("bookedProduct");
     const usersCollection = client.db("reCommerce").collection("users");
-    const productsCollection = client.db('reCommerce').collection('sellerProducts');
+    const productsCollection = client
+      .db("reCommerce")
+      .collection("sellerProducts");
 
     app.get("/categories", async (req, res) => {
       const query = {};
@@ -85,13 +87,13 @@ async function run() {
 
     app.get("/bookings/buyerEmail", async (req, res) => {
       const buyerEmail = req.query.buyerEmail;
-      const decodedEmail = req.decoded.email;
+      // const decodedEmail = req.decoded.email;
 
-      if (buyerEmail !== decodedEmail) {
-        return res.status(403).send({ message: "forbidden access" });
-      }
-      const query = { buyerEmail: buyerEmail };
-      console.log("token", req.headers.authorization);
+      // if (buyerEmail !== decodedEmail) {
+      //   return res.status(403).send({ message: "forbidden access" });
+      // }
+      const query = { email: buyerEmail };
+      // console.log("token", req.headers.authorization);
       const cursor = bookedProductCollection.find(query);
       const result = await cursor.toArray();
       res.send(result);
@@ -119,23 +121,44 @@ async function run() {
       res.send(result);
     });
 
-    // add product 
-    app.post("/addproduct", async (req,res) => {
+    // add product
+    app.post("/addproduct", async (req, res) => {
       const product = req.body;
       const result = await productsCollection.insertOne(product);
       res.send(result);
     });
-  // get product
-    app.get('/myproduct', async(req,res)=>{
-      const  query = {};
-      const product= await productsCollection.find(query).toArray();
+    // get product
+    app.get("/myproduct", async (req, res) => {
+      const query = {};
+      const product = await productsCollection.find(query).toArray();
       res.send(product);
+    });
+
+    app.get('/advertiseproduct', async (req,res)=> {
+      const query = { promote:true}
+      const result = await productsCollection.find(query).toArray();
+      res.send(result);
+
     })
 
+    app.patch("/myproduct/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const status = req.body.status;
+      const updatedDoc = {
+        $set: {
+          promote: status,
+        },
+      };
+      const result = await productsCollection.updateOne(query, updatedDoc);
+
+      res.send(result);
+    });
+
     // delete seller product
-    app.delete('/myproduct/:id', async(req,res)=> {
-      const id= req.params.id;
-      const query = {_id:ObjectId(id)};
+    app.delete("/myproduct/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
       const result = await productsCollection.deleteOne(query);
       res.send(result);
     });
@@ -147,7 +170,7 @@ async function run() {
       res.send(users);
     });
 
-    app.get("/allusers", async (req, res) => {
+    app.get("/users", async (req, res) => {
       const query = {};
       const users = await usersCollection.find(query).toArray();
       res.send(users);
@@ -188,13 +211,12 @@ async function run() {
 
     // make a user admin
 
-    app.put("/allusers/admin/:id",verifyJWT, async (req, res) => {
-      const decodedEmail= req.decoded.email;
-      const query = {email: decodedEmail};
+    app.put("/allusers/admin/:id", verifyJWT, async (req, res) => {
+      const decodedEmail = req.decoded.email;
+      const query = { email: decodedEmail };
       const user = await usersCollection.findOne(query);
-      if(user?.role !== 'admin'){
-        return res.status(403).send({message: 'forbidden access'})
-
+      if (user?.role !== "admin") {
+        return res.status(403).send({ message: "forbidden access" });
       }
       const id = req.params.id;
       const filter = { _id: ObjectId(id) };
